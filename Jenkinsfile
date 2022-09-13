@@ -1,22 +1,20 @@
 pipeline {
     agent any 
     stages {
-        stage('Clone Repo and Clean Workspace') { 
+        stage('Clean Workspace') { 
             steps {
-                bat "del /F /Q maven-app"
-                bat "rmdir /S /Q maven-app"
-                bat "git clone https://github.com/halifreaks/maven-app.git" 
-                bat "mvn clean -f maven-app"
+                bat "mvn clean"
             }
         }
         stage('Test') { 
             steps {
-                bat "mvn test -f maven-app"
+                bat "mvn test"
             }
         }
         stage('Deploy') { 
             steps {
-                bat "mvn package -f maven-app"            }
+                bat "mvn package"            
+		}
         }
     }
 }
