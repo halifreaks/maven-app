@@ -3,8 +3,6 @@ pipeline {
     stages {
         stage('Clone Repo and Clean Workspace') { 
             steps {
-                bat "del /F /Q maven-app"
-                bat "rmdir /S /Q maven-app"
                 bat "git clone https://github.com/halifreaks/maven-app.git" 
                 bat "mvn clean -f maven-app"
             }
